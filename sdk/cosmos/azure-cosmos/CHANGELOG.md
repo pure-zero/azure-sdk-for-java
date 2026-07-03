@@ -5,6 +5,7 @@
 #### Features Added
 
 #### Breaking Changes
+* Fixed `java.time.Instant` (and other `java.time` types handled by `JavaTimeModule`) serializing as a numeric epoch timestamp instead of an ISO-8601 string when using the default `CosmosItemSerializer`. Items previously written with epoch-numeric date fields will now be written with ISO-8601 string values going forward; reading previously-stored epoch-numeric values back into `Instant` fields continues to work unaffected. - See PR [49720](https://github.com/Azure/azure-sdk-for-java/pull/49720).
 
 #### Bugs Fixed
 * Unified request-level consistency override behavior across transports: invalid attempts to upgrade the request consistency level above the account default are now silently ignored instead of returning `BadRequest` in some gateway paths. - See PR [49606](https://github.com/Azure/azure-sdk-for-java/pull/49606).
